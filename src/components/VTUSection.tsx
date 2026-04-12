@@ -11,31 +11,38 @@ const highlights = [
 
 const VTUSection = () => {
   return (
-    <section className="section-padding bg-gray-50">
+    <section className="py-20 md:py-24 bg-white">
       <div className="container-custom">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
 
           {/* Image Column */}
           <div className="flex justify-center">
-            <div className="w-full max-w-md border border-gray-200 rounded-2xl bg-white p-4 shadow-sm">
-              <div className="flex items-center justify-center h-[240px]">
+            <div 
+              className="w-full max-w-md rounded-[20px] bg-white p-6"
+              style={{ 
+                border: '1px solid #E2E8F0',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(37,99,235,0.05)',
+                background: 'linear-gradient(135deg, #EFF6FF, #DBEAFE)'
+              }}
+            >
+              <div className="flex items-center justify-center h-[240px] bg-white rounded-xl">
                 <img
                   src={vtuCollab}
                   alt="Edutainer and VTU collaboration"
-                  className="max-h-full w-auto object-contain rounded-xl"
+                  className="max-h-full w-auto object-contain"
                   loading="lazy"
                 />
               </div>
               {/* Mini stat strip inside image card */}
-              <div className="flex justify-around pt-4 border-t border-gray-100 mt-4">
+              <div className="flex justify-around pt-5 border-t border-[#E2E8F0] mt-5">
                 {[
                   { val: "VTU", label: "Accredited" },
                   { val: "500+", label: "Graduates" },
                   { val: "95%", label: "Success Rate" },
                 ].map((s) => (
                   <div key={s.label} className="text-center">
-                    <div className="text-base font-bold text-blue-600">{s.val}</div>
-                    <div className="text-xs text-gray-500">{s.label}</div>
+                    <div className="text-lg font-bold text-[#2563EB]">{s.val}</div>
+                    <div className="text-xs text-[#64748B] mt-1">{s.label}</div>
                   </div>
                 ))}
               </div>
@@ -45,33 +52,50 @@ const VTUSection = () => {
           {/* Content Column */}
           <div className="flex flex-col gap-6">
             <div>
-              <span className="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 text-sm font-medium rounded-full mb-4">
+              <span 
+                className="inline-block px-4 py-2 bg-[#EFF6FF] text-[#2563EB] text-xs font-semibold rounded-full mb-5"
+                style={{ letterSpacing: '0.05em', textTransform: 'uppercase' }}
+              >
                 University Partnership
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] leading-tight mb-5">
                 Our Collaboration with VTU
               </h2>
-              <p className="text-base text-gray-500 leading-[1.8] max-w-xl">
+              <p className="text-base text-[#64748B] leading-[1.7] max-w-xl">
                 In partnership with VTU, a prestigious technological university, we're preparing students for future careers by offering skill-based learning and virtual internships. This collaboration empowers young minds with real-world skills and practical experience, bridging academia with industry.
               </p>
             </div>
 
             {/* Highlights */}
-            <ul className="space-y-3">
+            <ul className="space-y-3.5">
               {highlights.map((h) => (
                 <li key={h} className="flex items-center gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                  <span className="text-sm text-gray-700 font-medium">{h}</span>
+                  <CheckCircle2 className="w-5 h-5 text-[#22C55E] flex-shrink-0" />
+                  <span className="text-sm text-[#0F172A] font-medium">{h}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="flex flex-col sm:flex-row gap-3 pt-1">
-              <Button className="btn-primary rounded-xl">
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <Button 
+                className="bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-lg font-semibold transition-all duration-200 group"
+                style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(37,99,235,0.3)';
+                  e.currentTarget.style.transform = 'translateY(-1px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.06)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
                 Explore Courses
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
               </Button>
-              <Button variant="outline" className="rounded-xl">
+              <Button 
+                variant="outline" 
+                className="rounded-lg border-[#E2E8F0] text-[#64748B] hover:bg-[#F8FAFF] hover:text-[#2563EB] hover:border-[#2563EB] font-semibold transition-all duration-200"
+              >
                 Learn More
               </Button>
             </div>

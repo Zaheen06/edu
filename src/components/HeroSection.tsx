@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ArrowRight, Users, BookOpen, Clock, Award, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -38,87 +37,85 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative pt-24 pb-20 bg-white overflow-hidden">
-      {/* Subtle background accent */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-50/60 rounded-full blur-3xl opacity-60" />
-      </div>
+    <section className="relative pt-24 pb-16 overflow-hidden" style={{ background: 'linear-gradient(180deg, #FAFBFF 0%, #FFFFFF 100%)' }}>
 
       <div className="container-custom relative">
         {/* Hero Content */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55 }}
+        <div className="text-center max-w-4xl mx-auto mb-12">
+          <h1 
+            className="text-4xl md:text-5xl lg:text-[52px] font-bold mb-5 leading-[1.2]"
+            style={{ letterSpacing: '-0.015em', color: '#0F172A' }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-5 leading-[1.1] tracking-tight">
-              Learning for the{" "}
-              <span className="text-blue-600">Modern World</span>
-            </h1>
-            <p className="text-lg text-gray-500 mb-8 max-w-xl mx-auto leading-relaxed">
-              Reshaping education where accessibility and inclusivity meet real industry experience.
-            </p>
-          </motion.div>
+            Learning for the{" "}
+            <span className="text-[#2563EB]">Modern World</span>
+          </h1>
+          
+          <p 
+            className="text-base mb-8 max-w-[520px] mx-auto leading-[1.65]"
+            style={{ color: '#475569' }}
+          >
+            Reshaping education where accessibility and inclusivity meet real industry experience.
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.15 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10"
-          >
-            <Button size="lg" className="btn-primary px-8 h-12 rounded-xl text-sm font-semibold">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
+            <Button 
+              size="lg" 
+              className="bg-[#2563EB] hover:bg-[#1D4ED8] text-white px-7 h-11 rounded-lg text-sm font-medium transition-all duration-200"
+            >
               Explore Courses
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
-            <Button size="lg" variant="outline" className="h-12 rounded-xl text-sm font-semibold px-8">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="h-11 rounded-lg text-sm font-medium px-7 border-[#D1D5DB] text-[#475569] hover:bg-[#F9FAFB] hover:border-[#9CA3AF] transition-all duration-200"
+            >
               Learn More
             </Button>
-          </motion.div>
+          </div>
 
-          {/* Feature tags */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.28 }}
-            className="flex flex-wrap justify-center gap-2"
-          >
+          {/* Feature pills */}
+          <div className="flex flex-wrap justify-center gap-2.5">
             {features.map((f) => (
               <span
                 key={f}
-                className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-gray-50 border border-gray-200 text-gray-600 text-sm font-medium rounded-full"
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-white text-[#475569] text-sm font-medium rounded-full border border-[#E5E7EB]"
+                style={{ boxShadow: '0 1px 2px rgba(0,0,0,0.04)' }}
               >
-                <CheckCircle className="w-3.5 h-3.5 text-blue-500" />
+                <CheckCircle className="w-4 h-4 text-[#10B981]" />
                 {f}
               </span>
             ))}
-          </motion.div>
+          </div>
         </div>
 
         {/* Stats Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.4 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-5"
-        >
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
           {stats.map((stat) => {
             const Icon = stat.icon;
             return (
               <div
                 key={stat.label}
-                className="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 text-center hover:shadow-md transition-shadow duration-200 group"
+                className="bg-white rounded-xl p-7 text-center"
+                style={{ 
+                  border: '1px solid #E5E7EB',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+                  minHeight: '100%'
+                }}
               >
-                <div className="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-100 transition-colors duration-200">
-                  <Icon className="w-5 h-5 text-blue-600" />
+                <div 
+                  className="w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4"
+                  style={{ backgroundColor: '#F0F9FF' }}
+                >
+                  <Icon className="w-6 h-6 text-[#2563EB]" />
                 </div>
-                <div className="text-3xl font-bold text-gray-900 mb-1 tracking-tight">{stat.value}</div>
-                <div className="text-sm font-semibold text-gray-700 mb-1.5">{stat.label}</div>
-                <p className="text-xs text-gray-400 leading-snug">{stat.description}</p>
+                <div className="text-4xl font-bold text-[#0F172A] mb-2" style={{ letterSpacing: '-0.02em' }}>{stat.value}</div>
+                <div className="text-sm font-semibold text-[#0F172A] mb-2">{stat.label}</div>
+                <p className="text-xs text-[#6B7280] leading-relaxed">{stat.description}</p>
               </div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -29,17 +29,20 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   return (
-    <section className="section-padding bg-gray-50">
+    <section className="py-20 md:py-24" style={{ backgroundColor: '#F8FAFF' }}>
       <div className="container-custom">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <span className="inline-block px-4 py-2 bg-blue-50 text-blue-600 text-sm font-medium rounded-full mb-5">
+        <div className="text-center mb-14">
+          <span 
+            className="inline-block px-4 py-2 bg-[#EFF6FF] text-[#2563EB] text-xs font-semibold rounded-full mb-6"
+            style={{ letterSpacing: '0.05em', textTransform: 'uppercase' }}
+          >
             Student Success Stories
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-4 leading-tight">
             What Our Edutainees Say
           </h2>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+          <p className="text-base text-[#64748B] max-w-2xl mx-auto leading-[1.7]">
             Real stories from students who transformed their careers with our programs
           </p>
         </div>
@@ -49,38 +52,53 @@ const TestimonialsSection = () => {
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col gap-5 hover:shadow-md transition-shadow duration-200"
+              className="bg-white rounded-2xl p-6 flex flex-col gap-5 cursor-default"
+              style={{ 
+                border: '1px solid #E2E8F0',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(37,99,235,0.05)',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08), 0 8px 24px rgba(37,99,235,0.12)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(37,99,235,0.05)';
+              }}
             >
               {/* Quote icon + Stars */}
               <div className="flex items-center justify-between">
-                <div className="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
-                  <Quote className="w-4 h-4 text-blue-500" />
+                <div className="w-10 h-10 rounded-full bg-[#DBEAFE] flex items-center justify-center flex-shrink-0">
+                  <Quote className="w-5 h-5 text-[#2563EB]" />
                 </div>
                 <div className="flex items-center gap-0.5">
                   {[...Array(t.rating)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
+                    <Star key={i} className="w-4 h-4 text-[#F59E0B] fill-[#F59E0B]" />
                   ))}
                 </div>
               </div>
 
               {/* Review Text */}
-              <p className="text-sm text-gray-600 leading-relaxed line-clamp-5 flex-1">
+              <p className="text-sm text-[#64748B] leading-relaxed line-clamp-5 flex-1">
                 "{t.text}"
               </p>
+              <a href="#" className="text-sm text-[#2563EB] font-medium hover:underline">Read more</a>
 
               {/* Divider */}
-              <div className="border-t border-gray-100" />
+              <div className="border-t border-[#E2E8F0]" />
 
               {/* Author */}
               <div className="flex items-center gap-3">
                 <img
                   src={t.img}
                   alt={t.name}
-                  className="w-10 h-10 rounded-full object-cover ring-2 ring-blue-50"
+                  className="w-11 h-11 rounded-full object-cover"
+                  style={{ border: '2px solid #EFF6FF' }}
                 />
                 <div>
-                  <div className="text-sm font-semibold text-gray-900">{t.name}</div>
-                  <div className="text-xs text-gray-500">{t.role}</div>
+                  <div className="text-sm font-semibold text-[#0F172A]">{t.name}</div>
+                  <div className="text-xs text-[#64748B]">{t.role}</div>
                 </div>
               </div>
             </div>

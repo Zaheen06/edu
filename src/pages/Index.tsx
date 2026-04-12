@@ -5,7 +5,6 @@ import VTUSection from "@/components/VTUSection";
 import CoursesSection from "@/components/CoursesSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import JourneySection from "@/components/JourneySection";
-import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -18,7 +17,6 @@ const Index = () => {
       <CoursesSection />
       <TestimonialsSection />
       <JourneySection />
-      <ContactSection />
       <Footer />
     </div>
   );

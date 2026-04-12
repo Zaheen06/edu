@@ -137,31 +137,31 @@ const CoursesSection = () => {
   const handleNext = () => setPage((p) => Math.min(totalPages - 1, p + 1));
 
   return (
-    <section id="courses" className="section-padding bg-gray-50">
+    <section id="courses" className="py-20 md:py-24 bg-white">
       <div className="container-custom">
         {/* Section Header */}
-        <div className="text-center mb-10">
-          <span className="inline-block px-4 py-2 bg-blue-50 text-blue-600 text-sm font-medium rounded-full mb-5">
+        <div className="text-center mb-12">
+          <span className="inline-block px-4 py-2 bg-[#EFF6FF] text-[#2563EB] text-xs font-semibold tracking-wider uppercase rounded-full mb-6">
             Popular Courses
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-4 leading-tight">
             Transform Your Career with Expert-Led Courses
           </h2>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+          <p className="text-base text-[#64748B] max-w-2xl mx-auto leading-relaxed">
             Discover industry-leading courses designed by experts to help you master in-demand skills
           </p>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
               onClick={() => handleCategoryChange(cat)}
-              className={`px-5 py-2 text-sm font-medium rounded-full border transition-colors duration-150 ${
+              className={`px-6 py-2.5 text-sm font-medium rounded-full transition-all duration-200 ${
                 activeCategory === cat
-                  ? "bg-blue-600 text-white border-blue-600"
-                  : "bg-white text-gray-600 border-gray-200 hover:border-blue-300 hover:text-blue-600"
+                  ? "bg-[#2563EB] text-white"
+                  : "bg-[#F1F5F9] text-[#475569] hover:bg-[#E2E8F0] hover:text-[#2563EB]"
               }`}
             >
               {cat}
@@ -170,67 +170,77 @@ const CoursesSection = () => {
         </div>
 
         {/* Cards + Arrows */}
-        <div className="flex items-stretch gap-3 md:gap-4">
+        <div className="flex items-center gap-6">
           {/* Left Arrow */}
-          <div className="flex items-center">
-            <button
-              onClick={handlePrev}
-              disabled={page === 0}
-              aria-label="Previous courses"
-              className={`w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm transition-all duration-150 ${
-                page === 0
-                  ? "opacity-30 cursor-not-allowed"
-                  : "hover:border-blue-400 hover:text-blue-600 hover:shadow"
-              }`}
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-          </div>
+          <button
+            onClick={handlePrev}
+            disabled={page === 0}
+            aria-label="Previous courses"
+            className={`hidden md:flex w-11 h-11 items-center justify-center rounded-full border bg-white transition-all duration-200 flex-shrink-0 ${
+              page === 0
+                ? "opacity-30 cursor-not-allowed border-[#E2E8F0]"
+                : "border-[#E2E8F0] hover:border-[#2563EB] hover:bg-[#EFF6FF] hover:text-[#2563EB] shadow-sm hover:shadow-md"
+            }`}
+            style={{ boxShadow: page === 0 ? 'none' : '0 1px 3px rgba(0,0,0,0.06)' }}
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
 
           {/* Course Cards Grid */}
-          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-auto md:overflow-visible scroll-smooth snap-x snap-mandatory md:snap-none">
             {visible.map((course) => (
               <div
                 key={course.title}
-                className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden group cursor-pointer flex flex-col hover:shadow-md transition-shadow duration-200"
+                className="bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden group cursor-pointer flex flex-col hover:-translate-y-1 transition-all duration-250 ease-out snap-center md:snap-align-none min-w-full md:min-w-0"
+                style={{ 
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(37,99,235,0.05)',
+                  transition: 'all 0.25s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08), 0 8px 24px rgba(37,99,235,0.12)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(37,99,235,0.05)';
+                }}
               >
                 {/* Course Image */}
                 <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
                   <img
                     src={course.img}
                     alt={course.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300"
                     loading="lazy"
+                    style={{ transition: 'transform 0.3s ease' }}
                   />
                   {/* Category badge top-left */}
                   <div className="absolute top-3 left-3">
-                    <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${categoryColors[course.category]}`}>
+                    <span className={`text-xs font-semibold px-3 py-1.5 rounded-full ${categoryColors[course.category]}`}>
                       {course.category}
                     </span>
                   </div>
                   {/* Free badge top-right */}
                   <div className="absolute top-3 right-3">
-                    <span className="px-2.5 py-1 bg-green-600 text-white rounded-full text-xs font-semibold">
+                    <span className="px-3 py-1.5 bg-[#22C55E] text-white rounded-full text-xs font-semibold">
                       {course.price}
                     </span>
                   </div>
                 </div>
 
                 {/* Course Content */}
-                <div className="p-5 flex flex-col flex-1 gap-3">
+                <div className="p-6 flex flex-col flex-1 gap-3">
                   {/* Provider */}
-                  <div className="flex items-center gap-1.5">
-                    <BookOpen className="w-3.5 h-3.5 text-blue-500" />
-                    <span className="text-xs text-blue-600 font-medium">Edutainer</span>
+                  <div className="flex items-center gap-2">
+                    <BookOpen className="w-4 h-4 text-[#2563EB]" />
+                    <span className="text-xs text-[#2563EB] font-semibold">Edutainer</span>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-sm font-bold text-gray-900 leading-snug line-clamp-2">
+                  <h3 className="text-lg font-semibold text-[#0F172A] leading-snug line-clamp-2">
                     {course.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-xs text-gray-500 leading-relaxed line-clamp-2 flex-1">
+                  <p className="text-sm text-[#64748B] leading-relaxed line-clamp-2 flex-1">
                     {course.desc}
                   </p>
 
@@ -238,26 +248,32 @@ const CoursesSection = () => {
                   {course.rating > 0 && (
                     <div className="flex items-center gap-1">
                       {[...Array(course.rating)].map((_, i) => (
-                        <Star key={i} className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
+                        <Star key={i} className="w-4 h-4 text-[#F59E0B] fill-[#F59E0B]" />
                       ))}
-                      <span className="text-xs text-gray-500 ml-1">{course.rating}.0</span>
+                      <span className="text-sm text-[#64748B] ml-1 font-medium">{course.rating}.0</span>
                     </div>
                   )}
 
                   {/* Meta info */}
-                  <div className="flex items-center justify-between text-xs text-gray-400 pt-3 border-t border-gray-100">
-                    <div className="flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5" />
+                  <div className="flex items-center justify-between text-sm text-[#64748B] pt-3 border-t border-[#E2E8F0]">
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4" />
                       <span>{course.duration}</span>
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      <Users className="w-3.5 h-3.5" />
+                    <div className="flex items-center gap-2">
+                      <Users className="w-4 h-4" />
                       <span>{course.students} enrolled</span>
                     </div>
                   </div>
 
                   {/* CTA */}
-                  <Button size="sm" className="w-full btn-primary text-xs mt-1">
+                  <Button 
+                    size="sm" 
+                    className="w-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-sm font-medium mt-2 rounded-lg transition-all duration-200"
+                    style={{ 
+                      transition: 'all 0.2s ease',
+                    }}
+                  >
                     Enroll Now
                   </Button>
                 </div>
@@ -272,32 +288,61 @@ const CoursesSection = () => {
           </div>
 
           {/* Right Arrow */}
-          <div className="flex items-center">
-            <button
-              onClick={handleNext}
-              disabled={page >= totalPages - 1}
-              aria-label="Next courses"
-              className={`w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 bg-white shadow-sm transition-all duration-150 ${
-                page >= totalPages - 1
-                  ? "opacity-30 cursor-not-allowed"
-                  : "hover:border-blue-400 hover:text-blue-600 hover:shadow"
-              }`}
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
+          <button
+            onClick={handleNext}
+            disabled={page >= totalPages - 1}
+            aria-label="Next courses"
+            className={`hidden md:flex w-11 h-11 items-center justify-center rounded-full border bg-white transition-all duration-200 flex-shrink-0 ${
+              page >= totalPages - 1
+                ? "opacity-30 cursor-not-allowed border-[#E2E8F0]"
+                : "border-[#E2E8F0] hover:border-[#2563EB] hover:bg-[#EFF6FF] hover:text-[#2563EB] shadow-sm hover:shadow-md"
+            }`}
+            style={{ boxShadow: page >= totalPages - 1 ? 'none' : '0 1px 3px rgba(0,0,0,0.06)' }}
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Mobile Navigation Arrows */}
+        <div className="flex md:hidden justify-center gap-4 mt-8">
+          <button
+            onClick={handlePrev}
+            disabled={page === 0}
+            aria-label="Previous courses"
+            className={`w-11 h-11 flex items-center justify-center rounded-full border bg-white transition-all duration-200 ${
+              page === 0
+                ? "opacity-30 cursor-not-allowed border-[#E2E8F0]"
+                : "border-[#E2E8F0] hover:border-[#2563EB] hover:bg-[#EFF6FF] hover:text-[#2563EB]"
+            }`}
+            style={{ boxShadow: page === 0 ? 'none' : '0 1px 3px rgba(0,0,0,0.06)' }}
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={handleNext}
+            disabled={page >= totalPages - 1}
+            aria-label="Next courses"
+            className={`w-11 h-11 flex items-center justify-center rounded-full border bg-white transition-all duration-200 ${
+              page >= totalPages - 1
+                ? "opacity-30 cursor-not-allowed border-[#E2E8F0]"
+                : "border-[#E2E8F0] hover:border-[#2563EB] hover:bg-[#EFF6FF] hover:text-[#2563EB]"
+            }`}
+            style={{ boxShadow: page >= totalPages - 1 ? 'none' : '0 1px 3px rgba(0,0,0,0.06)' }}
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
         </div>
 
         {/* Page Dots */}
         {totalPages > 1 && (
-          <div className="flex justify-center items-center gap-2 mt-8">
+          <div className="flex justify-center items-center gap-2 mt-10">
             {Array.from({ length: totalPages }).map((_, i) => (
               <button
                 key={i}
                 onClick={() => setPage(i)}
                 aria-label={`Go to page ${i + 1}`}
-                className={`rounded-full transition-all duration-150 ${
-                  i === page ? "w-5 h-2 bg-blue-600" : "w-2 h-2 bg-gray-300"
+                className={`rounded-full transition-all duration-200 ${
+                  i === page ? "w-6 h-2 bg-[#2563EB]" : "w-2 h-2 bg-[#CBD5E1] hover:bg-[#94A3B8]"
                 }`}
               />
             ))}
@@ -305,8 +350,12 @@ const CoursesSection = () => {
         )}
 
         {/* View All CTA */}
-        <div className="text-center mt-10">
-          <Button variant="outline" size="lg">
+        <div className="text-center mt-12">
+          <Button 
+            variant="outline" 
+            size="lg"
+            className="border-[#E2E8F0] text-[#2563EB] hover:bg-[#EFF6FF] hover:border-[#2563EB] font-medium transition-all duration-200"
+          >
             View All Courses
           </Button>
         </div>

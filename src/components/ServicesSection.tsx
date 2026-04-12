@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Settings, UserCheck, SlidersHorizontal, Wifi } from "lucide-react";
 
 const services = [
@@ -30,51 +29,52 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section id="about" className="section-padding bg-gray-50">
+    <section id="about" className="py-16 md:py-20" style={{ backgroundColor: '#FAFBFC' }}>
       <div className="container-custom">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55 }}
+        <div className="text-center mb-10">
+          <span 
+            className="inline-block px-3.5 py-1.5 bg-[#EFF6FF] text-[#2563EB] text-xs font-semibold rounded-full mb-4"
+            style={{ letterSpacing: '0.03em', textTransform: 'uppercase' }}
           >
-            <span className="inline-block px-4 py-2 bg-blue-50 text-blue-600 text-sm font-medium rounded-full mb-5">
-              Our Services
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Empowering Your Learning Journey
-            </h2>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Comprehensive learning solutions designed to help you succeed in today's competitive landscape
-            </p>
-          </motion.div>
+            Our Services
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-3 leading-tight" style={{ letterSpacing: '-0.01em' }}>
+            Empowering Your Learning Journey
+          </h2>
+          <p className="text-base max-w-2xl mx-auto leading-[1.6]" style={{ color: '#475569' }}>
+            Comprehensive learning solutions designed to help you succeed in today's competitive landscape
+          </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, i) => {
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {services.map((service) => {
             const Icon = service.icon;
             return (
-              <motion.div
+              <div
                 key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 hover:shadow-md transition-shadow duration-200 group"
+                className="bg-white rounded-xl p-6"
+                style={{ 
+                  border: '1px solid #E5E7EB',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+                  minHeight: '100%',
+                  display: 'flex',
+                  flexDirection: 'column'
+                }}
               >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${service.color}`}>
-                  <Icon className="w-6 h-6" />
+                <div 
+                  className={`w-11 h-11 rounded-lg flex items-center justify-center mb-4 ${service.color}`}
+                >
+                  <Icon className="w-5 h-5" />
                 </div>
-                <h3 className="text-base font-bold text-gray-900 mb-2">
+                <h3 className="text-base font-semibold text-[#0F172A] mb-2.5" style={{ letterSpacing: '-0.01em' }}>
                   {service.title}
                 </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
+                <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>
                   {service.desc}
                 </p>
-              </motion.div>
+              </div>
             );
           })}
         </div>
