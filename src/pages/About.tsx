@@ -253,12 +253,6 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left content */}
             <div className="max-w-xl animate-fade-up">
-              {/* Eyebrow pill */}
-              <span className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-xs font-semibold tracking-wider uppercase px-4 py-2 rounded-full mb-8 border border-blue-100">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block" />
-                About Edutainer
-              </span>
-
               <h1 className="text-5xl lg:text-[3.75rem] font-bold text-gray-900 mb-6 leading-[1.1] tracking-tight">
                 Building the{" "}
                 <span className="relative inline-block">
@@ -303,23 +297,6 @@ const About = () => {
                   {/* Subtle overlay */}
                   <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/10 via-transparent to-transparent" />
                 </div>
-
-                {/* Floating achievement badge */}
-                <div className="absolute -bottom-5 -left-5 bg-white rounded-xl px-5 py-3 shadow-xl border border-gray-100 flex items-center gap-3 z-20">
-                  <div className="w-9 h-9 bg-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <TrendingUp className="w-4 h-4 text-white" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-gray-500 font-medium">Growth Rate</div>
-                    <div className="text-base font-bold text-gray-900">+120% YoY</div>
-                  </div>
-                </div>
-
-                {/* Floating learners badge */}
-                <div className="absolute -top-5 -right-5 bg-blue-600 rounded-xl px-5 py-3 shadow-xl flex items-center gap-3 z-20">
-                  <Star className="w-4 h-4 text-yellow-300" />
-                  <div className="text-sm font-semibold text-white">50K+ Learners</div>
-                </div>
               </div>
             </div>
           </div>
@@ -332,13 +309,19 @@ const About = () => {
       <section className="py-20 bg-gray-50 border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {impactStats.map((stat) => {
+            {impactStats.map((stat, index) => {
               const Icon = stat.icon;
               const c = colorMap[stat.color];
               return (
                 <div
                   key={stat.label}
                   className={`relative bg-white rounded-2xl p-7 border ${c.border} shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden group`}
+                  style={{
+                    animation: 'fadeSlideUp 0.6s ease-out',
+                    animationDelay: `${index * 100}ms`,
+                    animationFillMode: 'both',
+                    opacity: 0
+                  }}
                 >
                   {/* Background tint on hover */}
                   <div className={`absolute inset-0 ${c.bg} opacity-0 group-hover:opacity-40 transition-opacity duration-300`} />
@@ -629,6 +612,17 @@ const About = () => {
           from {
             opacity: 0;
             transform: translateY(12px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes fadeSlideUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
           }
           to {
             opacity: 1;
