@@ -178,7 +178,7 @@ const StoryRow = ({ phase, index }: { phase: typeof storyPhases[0]; index: numbe
             <img
               src={phase.image}
               alt={phase.title}
-              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+              className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.03]"
               loading="lazy"
             />
           </div>
@@ -263,19 +263,6 @@ const About = () => {
       ══════════════════════════════════════ */}
       <section className="py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section header */}
-          <div className="max-w-xl mb-20">
-            <span className="text-xs font-semibold text-blue-600 tracking-[0.12em] uppercase mb-4 block">
-              Who We Are
-            </span>
-            <h2 className="text-4xl font-bold text-gray-900 leading-tight tracking-tight mb-4">
-              Driven by Purpose,<br />Guided by Vision
-            </h2>
-            <p className="text-gray-500 leading-relaxed">
-              Every decision we take is rooted in a clear purpose — to make
-              education transformative, accessible, and aligned with the real world.
-            </p>
-          </div>
 
           <div className="space-y-24">
             {/* Vision — image left, text right */}
@@ -283,7 +270,7 @@ const About = () => {
               <div className="relative group">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                   <img
-                    src="/images/about/about-vision-future.png"
+                    src="/images/about/about-vision-future.svg"
                     alt="Our Vision"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
@@ -353,7 +340,7 @@ const About = () => {
               <div className="relative group order-1 lg:order-2">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                   <img
-                    src="/images/about/about-innovation-ai.png"
+                    src="/images/about/about-misson.svg"
                     alt="Our Mission"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
@@ -372,11 +359,8 @@ const About = () => {
       <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <span className="text-xs font-bold tracking-[0.14em] uppercase text-blue-600 mb-3 block">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight tracking-tight" style={{ fontFamily: "'Inter', 'Segoe UI', system-ui, sans-serif" }}>
               Our Impact
-            </span>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight tracking-tight">
-              Numbers That Tell Our Story
             </h2>
           </div>
 

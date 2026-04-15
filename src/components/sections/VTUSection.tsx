@@ -1,85 +1,194 @@
-import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-const vtuCollab = "/images/about/collaboration-vtu.png";
+import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 
-const highlights = [
-  "Skill-based learning curriculum",
-  "Virtual internship programs",
-  "Direct industry mentorship",
-  "Certification on completion",
+/* ─────────────────────────────────────────────
+   DATA
+───────────────────────────────────────────── */
+const features = [
+  "Industry-aligned skill-based learning curriculum",
+  "Real-world virtual internship opportunities",
+  "Expert mentorship from industry professionals",
+  "Recognized certification upon completion",
 ];
 
+/* ─────────────────────────────────────────────
+   MAIN COMPONENT
+───────────────────────────────────────────── */
 const VTUSection = () => {
   return (
-    <section className="py-24 lg:py-28 bg-white">
-      <div className="container-custom">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <section className="relative py-24 lg:py-32 overflow-hidden bg-white">
+      {/* Decorative Blobs */}
+      <div
+        className="absolute top-20 right-0 w-96 h-96 rounded-full opacity-20 blur-3xl pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, rgba(4, 140, 228, 0.15) 0%, transparent 70%)",
+        }}
+      />
+      <div
+        className="absolute bottom-20 left-0 w-96 h-96 rounded-full opacity-15 blur-3xl pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, rgba(4, 84, 172, 0.1) 0%, transparent 70%)",
+        }}
+      />
 
-          {/* Image Column */}
-          <div className="flex justify-center">
-            <div className="w-full max-w-md">
-              <img
-                src={vtuCollab}
-                alt="Edutainer and VTU collaboration"
-                className="w-full h-auto object-contain rounded-xl"
-                loading="lazy"
-                style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.1))' }}
-              />
-            </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Main Container Card */}
+        <div
+          className="rounded-3xl p-10 md:p-14 backdrop-blur-xl"
+          style={{
+            background: "rgba(255, 255, 255, 0.6)",
+            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(4, 140, 228, 0.1)",
+          }}
+        >
+          {/* Header */}
+          <div className="text-center mb-12">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight">
+              Our Collaboration 
+              
+            </h2>
           </div>
 
-          {/* Content Column */}
-          <div className="flex flex-col gap-6">
-            <div>
-              <span 
-                className="inline-block px-4 py-2 bg-[#EFF6FF] text-[#2563EB] text-xs font-semibold rounded-full mb-5"
-                style={{ letterSpacing: '0.05em', textTransform: 'uppercase' }}
-              >
-                University Partnership
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] leading-tight mb-5">
-                Our Collaboration with VTU
-              </h2>
-              <p className="text-base text-[#64748B] leading-[1.7] max-w-xl">
-                In partnership with VTU, a prestigious technological university, we're preparing students for future careers by offering skill-based learning and virtual internships. This collaboration empowers young minds with real-world skills and practical experience, bridging academia with industry.
-              </p>
-            </div>
-
-            {/* Highlights */}
-            <ul className="space-y-3.5">
-              {highlights.map((h) => (
-                <li key={h} className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#22C55E] flex-shrink-0" />
-                  <span className="text-sm text-[#0F172A] font-medium">{h}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <Button 
-                className="bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-lg font-semibold transition-all duration-200 group"
-                style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(37,99,235,0.3)';
-                  e.currentTarget.style.transform = 'translateY(-1px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.06)';
-                  e.currentTarget.style.transform = 'translateY(0)';
+          {/* Inner Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            
+            {/* ═══════════════════════════════════
+                LEFT SIDE — Logo Card
+            ═══════════════════════════════════ */}
+            <div className="flex justify-center">
+              <div
+                className="group relative w-full max-w-lg rounded-2xl p-10 lg:p-12 backdrop-blur-lg transition-all duration-500 hover:scale-[1.02]"
+                style={{
+                  background: "rgba(255, 255, 255, 0.7)",
+                  boxShadow: "0 10px 40px rgba(4, 140, 228, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.5)",
                 }}
               >
-                Explore Courses
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-              </Button>
-              <Button 
-                variant="outline" 
-                className="rounded-lg border-[#E2E8F0] text-[#64748B] hover:bg-[#F8FAFF] hover:text-[#2563EB] hover:border-[#2563EB] font-semibold transition-all duration-200"
-              >
-                Learn More
-              </Button>
+                {/* Radial Glow Behind */}
+                <div
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
+                  style={{
+                    background: "radial-gradient(circle at center, rgba(4, 140, 228, 0.3) 0%, transparent 70%)",
+                    filter: "blur(30px)",
+                  }}
+                />
+
+                {/* Blurred Background Circle */}
+                <div
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full opacity-20 blur-2xl"
+                  style={{
+                    background: "radial-gradient(circle, #048CE4 0%, transparent 70%)",
+                  }}
+                />
+
+                {/* Collaboration Image */}
+                <div className="relative flex items-center justify-center">
+                  <img
+                    src="/images/about/collaboration-vtu.png"
+                    alt="Edutainer and VTU Collaboration"
+                    className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
+                    style={{ filter: "drop-shadow(0 8px 24px rgba(4, 140, 228, 0.2))" }}
+                  />
+                </div>
+              </div>
             </div>
+
+            {/* ═══════════════════════════════════
+                RIGHT SIDE — Content Card
+            ═══════════════════════════════════ */}
+            <div
+              className="rounded-2xl p-8 lg:p-10 backdrop-blur-lg"
+              style={{
+                background: "rgba(255, 255, 255, 0.7)",
+                boxShadow: "0 10px 40px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(255, 255, 255, 0.5)",
+              }}
+            >
+              <div className="space-y-6">
+                {/* Title */}
+                <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
+                  Building Future-Ready Skills Together
+                </h3>
+
+                {/* Description */}
+                <p className="text-base lg:text-lg text-gray-600 leading-relaxed">
+                  In partnership with Visvesvaraya Technological University, we're transforming education by bridging the gap between academia and industry through innovative programs.
+                </p>
+
+                {/* Feature List - Mini Cards */}
+                <div className="space-y-3 pt-2">
+                  {features.map((feature, index) => (
+                    <div
+                      key={index}
+                      className="group/feature flex items-start gap-4 p-4 rounded-xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                      style={{
+                        background: "rgba(255, 255, 255, 0.6)",
+                        border: "1px solid rgba(4, 140, 228, 0.1)",
+                      }}
+                    >
+                      <div
+                        className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-0.5 transition-transform duration-300 group-hover/feature:scale-110"
+                        style={{
+                          background: "linear-gradient(135deg, #10B981 0%, #059669 100%)",
+                          boxShadow: "0 4px 12px rgba(16, 185, 129, 0.3)",
+                        }}
+                      >
+                        <CheckCircle2 className="w-3.5 h-3.5 text-white" strokeWidth={3} />
+                      </div>
+                      <span className="text-sm lg:text-base text-gray-700 leading-relaxed font-medium">
+                        {feature}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                  {/* Primary Button */}
+                  <a
+                    href="/#courses"
+                    className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-white text-sm overflow-hidden transition-all duration-300 hover:scale-105"
+                    style={{
+                      background: "linear-gradient(135deg, #048CE4 0%, #0454AC 100%)",
+                      boxShadow: "0 10px 30px rgba(4, 140, 228, 0.4)",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.boxShadow = "0 15px 40px rgba(4, 140, 228, 0.5)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.boxShadow = "0 10px 30px rgba(4, 140, 228, 0.4)";
+                    }}
+                  >
+                    <span className="relative z-10 flex items-center gap-2">
+                      Explore Courses
+                      <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
+                    {/* Shine Effect */}
+                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                  </a>
+
+                  {/* Secondary Button */}
+                  <a
+                    href="/about"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-sm transition-all duration-300 hover:scale-105"
+                    style={{
+                      color: "#048CE4",
+                      border: "2px solid #048CE4",
+                      background: "white",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = "#048CE4";
+                      e.currentTarget.style.color = "white";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = "white";
+                      e.currentTarget.style.color = "#048CE4";
+                    }}
+                  >
+                    Learn More
+                  </a>
+                </div>
+              </div>
+            </div>
+
           </div>
-
         </div>
       </div>
     </section>
